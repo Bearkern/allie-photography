@@ -1,4 +1,26 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true }
+  devtools: { enabled: true },
+  typescript: {
+    shim: false
+  },
+  imports: {
+    dirs: ['stores']
+  },
+  modules: [
+    '@pinia/nuxt',
+    '@nuxtjs/tailwindcss',
+  ],
+  app: {
+    head: {
+      viewport: 'width=device-width, initial-scale=1',
+      title: '艾里攝影工作室',
+      meta: [
+        { 'name': 'description', 'content': '這是艾里攝影工作室' },
+        { 'property': 'og:title', 'content': '艾里攝影工作室' },
+        { 'property': 'og:url', 'content': 'http://localhost:3000/' },
+        { 'property': 'og:description', 'content': '這是艾里攝影工作室' },
+      ],
+    }
+  },
 })
