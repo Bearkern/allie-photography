@@ -17,5 +17,7 @@ module.exports = {
   rules: {
     'no-undef': 'off',
     'prettier/prettier': 'error',
+    'vue/multi-word-component-names': 0,
+    'vue/no-multiple-template-root': 0,
   },
 };

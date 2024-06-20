@@ -63,6 +63,9 @@ export default {
         },
       ],
     },
+    boxShadow: {
+      DEFAULT: '4px 4px 8px rgba(0, 0, 0, 0.1)',
+    },
     extend: {
       padding: {
         30: '120px',
@@ -106,9 +109,6 @@ export default {
       },
       borderRadius: {
         '4xl': '50px',
-      },
-      boxShadow: {
-        DEFAULT: '0 4px 16px rgba(0, 0, 0, 0.06)',
       },
     },
   },
