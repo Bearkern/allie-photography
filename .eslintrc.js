@@ -1,7 +1,7 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
   },
   extends: [
     '@nuxtjs',
@@ -11,11 +11,11 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 13,
-    sourceType: 'module'
+    sourceType: 'module',
   },
   plugins: ['prettier'],
   rules: {
     'no-undef': 'off',
     'prettier/prettier': 'error',
-  }
-}
+  },
+};

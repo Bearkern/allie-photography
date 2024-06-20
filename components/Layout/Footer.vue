@@ -1,11 +1,11 @@
 <script lang="ts" setup></script>
 
 <template>
-  <footer class="bg-secondary mt-auto">
-    <div class="container py-12 flex flex-col items-center text-white">
+  <footer class="mt-auto bg-secondary">
+    <div class="container flex flex-col items-center py-12 text-white">
       <img
         src="@/assets/images/logo-white.svg"
-        class="h-[66px] w-[66px] mb-4"
+        class="mb-4 h-[66px] w-[66px]"
         alt="艾里攝影工作室 logo"
       />
       <nav class="mb-6">

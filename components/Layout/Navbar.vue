@@ -15,12 +15,12 @@ watch(
 </script>
 
 <template>
-  <header class="container py-4 relative">
+  <header class="container relative py-4">
     <div class="flex justify-between">
       <h1 class="text-[0]">
         <NuxtLink
           to="/"
-          class="bg-contain bg-center bg-no-repeat w-[258px] h-[66px] inline-block bg-[url('@/assets/images/logo-name-white.svg')]"
+          class="inline-block h-[66px] w-[258px] bg-[url('@/assets/images/logo-name-white.svg')] bg-contain bg-center bg-no-repeat"
         ></NuxtLink>
         艾里攝影工作室
       </h1>
@@ -29,12 +29,13 @@ watch(
           <span class="material-symbols-outlined text-[40px]"> menu </span>
         </button>
         <nav
-          class="absolute bg-secondary text-white w-full max-h-0 top-full left-0 z-10 transition-max-height duration-300 md:static md:max-h-auto md:bg-white md:text-secondary md:transition-none"
-          :class="{ 'max-h-96': isHamburgerMenuVisible }"
+          class="transition-max-height absolute left-0 top-full z-10 max-h-0 w-full bg-secondary text-white duration-300 md:static md:max-h-96 md:bg-white md:text-secondary md:transition-none"
+          :class="{
+            'max-h-96': isHamburgerMenuVisible,
+            'max-h-0 overflow-hidden': !isHamburgerMenuVisible,
+          }"
         >
-          <ul
-            class="flex flex-col gap-4 text-center py-4 md:flex-row lg:gap-10"
-          >
+          <ul class="flex flex-col gap-4 py-4 text-center md:flex-row lg:gap-10">
             <li><NuxtLink to="/about">關於艾里</NuxtLink></li>
             <li><NuxtLink to="/portfolios">攝影作品</NuxtLink></li>
             <li><NuxtLink to="/packages">攝影方案</NuxtLink></li>
