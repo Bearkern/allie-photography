@@ -21,15 +21,68 @@
     </div>
     <ul class="flex grow gap-4 lg:max-w-[calc(theme('screens.xl')*1/2-24px)] lg:gap-6">
       <li
-        class="min-h-[232px] grow bg-[url('@/assets/images/home-about1.jpg')] bg-cover bg-center lg:min-h-[360px]"
+        class="min-h-[232px] grow bg-[url('@/assets/images/home-about1.jpg')] bg-cover bg-center shadow lg:min-h-[360px]"
       ></li>
       <li
-        class="min-h-[232px] grow bg-[url('@/assets/images/home-about2.jpg')] bg-cover bg-center lg:min-h-[360px]"
+        class="min-h-[232px] grow bg-[url('@/assets/images/home-about2.jpg')] bg-cover bg-center shadow lg:min-h-[360px]"
       ></li>
       <li
-        class="min-h-[232px] grow bg-[url('@/assets/images/home-about3.jpg')] bg-cover bg-center lg:min-h-[360px]"
+        class="min-h-[232px] grow bg-[url('@/assets/images/home-about3.jpg')] bg-cover bg-center shadow lg:min-h-[360px]"
       ></li>
     </ul>
+  </section>
+
+  <section class="bg-light py-10 pb-16 lg:pb-20 lg:pt-12">
+    <div class="container">
+      <h2 class="mb-6">攝影作品</h2>
+      <ul class="flex flex-col gap-6 md:flex-row">
+        <li class="md:w-1/3">
+          <div class="flex h-full flex-col">
+            <div class="pb-1/1 relative mb-2 overflow-hidden rounded">
+              <img
+                src="@/assets/images/home-portfolio1.jpg"
+                alt="新生兒寫真"
+                class="absolute h-full w-full object-cover"
+              />
+            </div>
+            <div>
+              <h3>新生兒寫真</h3>
+              <p>寶寶一生中最珍貴美的回憶，出生14-21天即可拍攝。</p>
+            </div>
+          </div>
+        </li>
+        <li class="md:w-1/3">
+          <div class="flex h-full flex-col">
+            <div class="pb-1/1 relative mb-2 overflow-hidden rounded">
+              <img
+                src="@/assets/images/home-portfolio2.jpg"
+                alt="孕婦寫真"
+                class="absolute h-full w-full object-cover"
+              />
+            </div>
+            <div class="mt-auto">
+              <h3>孕婦寫真</h3>
+              <p>孕媽咪最美麗的體態，28-32周的肚子大小最好。 曲線漂亮剛好、一切都很好！</p>
+            </div>
+          </div>
+        </li>
+        <li class="md:w-1/3">
+          <div class="flex h-full flex-col">
+            <div class="pb-1/1 relative mb-2 overflow-hidden rounded">
+              <img
+                src="@/assets/images/home-portfolio3.jpg"
+                alt="週歲寫真"
+                class="absolute h-full w-full object-cover"
+              />
+            </div>
+            <div>
+              <h3>週歲寫真</h3>
+              <p>讓我們一起來迎接寶寶的第一個生日吧～</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </section>
 </template>
 
