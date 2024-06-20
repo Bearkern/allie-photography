@@ -10,6 +10,12 @@
     font-family: 'Noto Sans TC', sans-serif;
     @apply text-secondary;
   }
+  h2 {
+    @apply text-lg;
+  }
+  h3 {
+    @apply text-md;
+  }
 }
 
 @layer components {

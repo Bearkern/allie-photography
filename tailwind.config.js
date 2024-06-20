@@ -20,48 +20,6 @@ export default {
       xl: ['28px', 1.5],
       '2xl': ['32px', 1.5],
       '3xl': ['40px', 1.5],
-      h6: [
-        '16px',
-        {
-          lineHeight: '1.2',
-          fontWeight: '700',
-        },
-      ],
-      h5: [
-        '20px',
-        {
-          lineHeight: '1.2',
-          fontWeight: '700',
-        },
-      ],
-      h4: [
-        '24px',
-        {
-          lineHeight: '1.2',
-          fontWeight: '700',
-        },
-      ],
-      h3: [
-        '28px',
-        {
-          lineHeight: '1.2',
-          fontWeight: '700',
-        },
-      ],
-      h2: [
-        '32px',
-        {
-          lineHeight: '1.2',
-          fontWeight: '700',
-        },
-      ],
-      h1: [
-        '40px',
-        {
-          lineHeight: '1.2',
-          fontWeight: '700',
-        },
-      ],
     },
     boxShadow: {
       DEFAULT: '4px 4px 8px rgba(0, 0, 0, 0.1)',
@@ -69,6 +27,9 @@ export default {
     extend: {
       padding: {
         30: '120px',
+      },
+      spacing: {
+        '1/1': '100%',
       },
       width: {
         '3/8': '37.5%',
@@ -95,8 +56,7 @@ export default {
           emphasis: '#E5F8ED', // '#E2F5F4',
         },
         light: {
-          DEFAULT: '#FAEEE2',
-          emphasis: '#FBF9F7',
+          DEFAULT: '#F5EEEC',
         },
         grey: {
           100: '#F2F2F2',
