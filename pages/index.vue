@@ -32,17 +32,17 @@
     </ul>
   </section>
 
-  <section class="bg-light py-10 pb-16 lg:pb-20 lg:pt-12">
+  <section class="bg-light pb-16 pt-10 lg:pb-20 lg:pt-12">
     <div class="container">
       <h2 class="mb-6">攝影作品</h2>
       <ul class="flex flex-col gap-6 md:flex-row">
         <li class="md:w-1/3">
           <div class="flex h-full flex-col">
-            <div class="pb-1/1 relative mb-2 overflow-hidden rounded">
+            <div class="mb-2 overflow-hidden rounded">
               <img
                 src="@/assets/images/home-portfolio1.jpg"
                 alt="新生兒寫真"
-                class="absolute h-full w-full object-cover"
+                class="aspect-square object-cover"
               />
             </div>
             <div>
@@ -53,11 +53,11 @@
         </li>
         <li class="md:w-1/3">
           <div class="flex h-full flex-col">
-            <div class="pb-1/1 relative mb-2 overflow-hidden rounded">
+            <div class="mb-2 overflow-hidden rounded">
               <img
                 src="@/assets/images/home-portfolio2.jpg"
                 alt="孕婦寫真"
-                class="absolute h-full w-full object-cover"
+                class="aspect-square object-cover"
               />
             </div>
             <div class="mt-auto">
@@ -68,11 +68,11 @@
         </li>
         <li class="md:w-1/3">
           <div class="flex h-full flex-col">
-            <div class="pb-1/1 relative mb-2 overflow-hidden rounded">
+            <div class="mb-2 overflow-hidden rounded">
               <img
                 src="@/assets/images/home-portfolio3.jpg"
                 alt="週歲寫真"
-                class="absolute h-full w-full object-cover"
+                class="aspect-square object-cover"
               />
             </div>
             <div>
@@ -83,6 +83,111 @@
         </li>
       </ul>
     </div>
+  </section>
+
+  <section class="container pb-16 pt-10 lg:pb-20 lg:pt-12">
+    <h2 class="mb-6">攝影方案</h2>
+    <ul class="flex flex-col flex-wrap gap-6 md:flex-row">
+      <li class="md:w-full lg:w-2/3">
+        <div
+          class="relative flex h-full flex-col gap-2 overflow-hidden rounded bg-grey-100 p-6 md:flex-row md:gap-8"
+        >
+          <div class="md:max-w-[240px]">
+            <img
+              src="@/assets/images/home-package1.jpg"
+              alt="孕婦寫真"
+              class="aspect-square object-cover"
+            />
+          </div>
+          <div class="flex flex-col items-start gap-1">
+            <span class="inline-block rounded-3xl bg-white px-2 py-1">A 方案</span>
+            <h3>
+              <span class="mr-1">孕婦寫真</span>
+              <span>8800</span>
+            </h3>
+            <ol class="mb-[56px] ml-5 list-decimal md:mb-auto">
+              <li>孕婦寫真三套服裝</li>
+              <li>精修十張照片</li>
+              <li>全家福(大寶可入鏡)</li>
+              <li>贈全部電子檔</li>
+            </ol>
+            <a href="#" class="stretched-link">
+              <div class="absolute bottom-6 right-6 flex gap-1">
+                <span class="material-symbols-outlined"> arrow_right_alt </span>
+                <span>查看細節</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </li>
+      <li class="md:w-full lg:ml-auto lg:w-2/3">
+        <div
+          class="relative flex h-full flex-col gap-2 overflow-hidden rounded bg-light p-6 md:flex-row md:gap-8"
+        >
+          <div class="md:max-w-[240px]">
+            <img
+              src="@/assets/images/home-package2.jpg"
+              alt="新生兒寫真"
+              class="aspect-square object-cover"
+            />
+          </div>
+          <div class="flex flex-col items-start gap-1">
+            <span class="inline-block rounded-3xl bg-white px-2 py-1">B 方案</span>
+            <h3>
+              <span class="mr-1">新生兒寫真</span>
+              <span>10800</span>
+            </h3>
+            <ol class="mb-[56px] ml-5 list-decimal md:mb-auto">
+              <li>寶貝寫真三至六套服裝</li>
+              <li>場景三種</li>
+              <li>全家福(大寶可入鏡)</li>
+              <li>6 × 8 - 12P 相本</li>
+              <li>贈全部電子檔</li>
+            </ol>
+            <a href="#" class="stretched-link">
+              <div class="absolute bottom-6 right-6 flex gap-1">
+                <span class="material-symbols-outlined"> arrow_right_alt </span>
+                <span>查看細節</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </li>
+      <li class="md:w-full lg:w-2/3">
+        <div
+          class="relative flex h-full flex-col gap-2 overflow-hidden rounded bg-grey-100 p-6 md:flex-row md:gap-8"
+        >
+          <div class="md:max-w-[240px]">
+            <img
+              src="@/assets/images/home-package3.jpg"
+              alt="孕婦 + 新生兒寫真"
+              class="aspect-square object-cover"
+            />
+          </div>
+          <div class="flex flex-col items-start gap-1">
+            <span class="inline-block rounded-3xl bg-white px-2 py-1">C 方案</span>
+            <h3>
+              <span class="mr-1">孕婦 + 新生兒寫真</span>
+              <span>16800</span>
+            </h3>
+            <ol class="mb-[56px] ml-5 list-decimal md:mb-auto">
+              <li>孕婦寫真三套服裝(含妝髮)</li>
+              <li>孕婦寫真精修十張照片</li>
+              <li>寶寶服裝六套</li>
+              <li>全家福</li>
+              <li>6 × 8 - 12P 相本</li>
+              <li>贈全部電子檔</li>
+            </ol>
+            <a href="#" class="stretched-link">
+              <div class="absolute bottom-6 right-6 flex gap-1">
+                <span class="material-symbols-outlined"> arrow_right_alt </span>
+                <span>查看細節</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </li>
+    </ul>
   </section>
 </template>
 
