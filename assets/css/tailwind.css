@@ -11,10 +11,10 @@
     @apply text-secondary;
   }
   h2 {
-    @apply text-lg;
+    @apply text-lg font-medium;
   }
   h3 {
-    @apply text-md;
+    @apply text-md font-medium;
   }
 }
 
@@ -27,5 +27,11 @@
   }
   .btn-lg {
     @apply bg-white text-md text-secondary hover:bg-secondary hover:text-white;
+  }
+}
+
+@layer utilities {
+  .stretched-link {
+    @apply before:absolute before:inset-0 before:z-10;
   }
 }

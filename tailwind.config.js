@@ -59,7 +59,7 @@ export default {
           DEFAULT: '#F5EEEC',
         },
         grey: {
-          100: '#F2F2F2',
+          100: '#F4F4F4',
           200: '#E0E0E0',
           300: '#BDBDBD',
           400: '#828282',
