@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 interface AllPhotoPackages {
   _id: string;
+  package: string;
   title: string;
   price: number;
   cover: string;
@@ -14,7 +15,7 @@ const AllPhotoPackagesResult = (await getAllPhotoPackages()) as {
 };
 const { data: allPhotoPackagesData } = AllPhotoPackagesResult;
 
-allPhotoPackages.value = allPhotoPackagesData.value;
+allPhotoPackages.value = [...allPhotoPackagesData.value].splice(0, 3);
 </script>
 
 <template>
@@ -124,7 +125,7 @@ allPhotoPackages.value = allPhotoPackagesData.value;
           </div>
           <div class="flex flex-col items-start gap-1">
             <span class="inline-block rounded-3xl bg-white px-2 py-1">{{
-              photoPackage.title
+              photoPackage.package
             }}</span>
             <h3>
               <span class="mr-1">{{ photoPackage.title }}</span>
@@ -133,12 +134,12 @@ allPhotoPackages.value = allPhotoPackagesData.value;
             <ol class="mb-[56px] ml-5 list-decimal md:mb-auto">
               <li v-for="content in photoPackage.content">{{ content }}</li>
             </ol>
-            <a href="#" class="stretched-link">
+            <NuxtLink to="/" class="stretched-link">
               <div class="absolute bottom-6 right-6 flex gap-1">
                 <span class="material-symbols-outlined"> arrow_right_alt </span>
                 <span>查看細節</span>
               </div>
-            </a>
+            </NuxtLink>
           </div>
         </div>
       </li>
