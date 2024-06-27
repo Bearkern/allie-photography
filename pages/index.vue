@@ -1,4 +1,21 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+interface AllPhotoPackages {
+  _id: string;
+  title: string;
+  price: number;
+  cover: string;
+  content: string[];
+}
+const { getAllPhotoPackages } = useApi();
+const allPhotoPackages = ref<AllPhotoPackages[]>([]);
+
+const AllPhotoPackagesResult = (await getAllPhotoPackages()) as {
+  data: { value: AllPhotoPackages[] };
+};
+const { data: allPhotoPackagesData } = AllPhotoPackagesResult;
+
+allPhotoPackages.value = allPhotoPackagesData.value;
+</script>
 
 <template>
   <section class="min-h-[520px] bg-[url('@/assets/images/home-banner.jpg')] bg-cover bg-center">
@@ -88,95 +105,33 @@
   <section class="container pb-16 pt-10 lg:pb-20 lg:pt-12">
     <h2 class="mb-6">攝影方案</h2>
     <ul class="flex flex-col flex-wrap gap-6 md:flex-row">
-      <li class="md:w-full lg:w-2/3">
+      <li
+        v-for="(photoPackage, index) in allPhotoPackages"
+        :key="photoPackage._id"
+        class="md:w-full lg:w-2/3"
+        :class="index % 2 === 0 ? '' : 'lg:ml-auto'"
+      >
         <div
-          class="relative flex h-full flex-col gap-2 overflow-hidden rounded bg-grey-100 p-6 md:flex-row md:gap-8"
+          class="relative flex h-full flex-col gap-2 overflow-hidden rounded p-6 md:flex-row md:gap-8"
+          :class="index % 2 === 0 ? 'bg-gray-100' : 'bg-light'"
         >
           <div class="md:max-w-[240px]">
             <img
-              src="@/assets/images/home-package1.jpg"
-              alt="孕婦寫真"
+              :src="photoPackage.cover"
+              :alt="photoPackage.title"
               class="aspect-square object-cover"
             />
           </div>
           <div class="flex flex-col items-start gap-1">
-            <span class="inline-block rounded-3xl bg-white px-2 py-1">A 方案</span>
+            <span class="inline-block rounded-3xl bg-white px-2 py-1">{{
+              photoPackage.title
+            }}</span>
             <h3>
-              <span class="mr-1">孕婦寫真</span>
-              <span>8800</span>
+              <span class="mr-1">{{ photoPackage.title }}</span>
+              <span>{{ photoPackage.price }}</span>
             </h3>
             <ol class="mb-[56px] ml-5 list-decimal md:mb-auto">
-              <li>孕婦寫真三套服裝</li>
-              <li>精修十張照片</li>
-              <li>全家福(大寶可入鏡)</li>
-              <li>贈全部電子檔</li>
-            </ol>
-            <a href="#" class="stretched-link">
-              <div class="absolute bottom-6 right-6 flex gap-1">
-                <span class="material-symbols-outlined"> arrow_right_alt </span>
-                <span>查看細節</span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </li>
-      <li class="md:w-full lg:ml-auto lg:w-2/3">
-        <div
-          class="relative flex h-full flex-col gap-2 overflow-hidden rounded bg-light p-6 md:flex-row md:gap-8"
-        >
-          <div class="md:max-w-[240px]">
-            <img
-              src="@/assets/images/home-package2.jpg"
-              alt="新生兒寫真"
-              class="aspect-square object-cover"
-            />
-          </div>
-          <div class="flex flex-col items-start gap-1">
-            <span class="inline-block rounded-3xl bg-white px-2 py-1">B 方案</span>
-            <h3>
-              <span class="mr-1">新生兒寫真</span>
-              <span>10800</span>
-            </h3>
-            <ol class="mb-[56px] ml-5 list-decimal md:mb-auto">
-              <li>寶貝寫真三至六套服裝</li>
-              <li>場景三種</li>
-              <li>全家福(大寶可入鏡)</li>
-              <li>6 × 8 - 12P 相本</li>
-              <li>贈全部電子檔</li>
-            </ol>
-            <a href="#" class="stretched-link">
-              <div class="absolute bottom-6 right-6 flex gap-1">
-                <span class="material-symbols-outlined"> arrow_right_alt </span>
-                <span>查看細節</span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </li>
-      <li class="md:w-full lg:w-2/3">
-        <div
-          class="relative flex h-full flex-col gap-2 overflow-hidden rounded bg-grey-100 p-6 md:flex-row md:gap-8"
-        >
-          <div class="md:max-w-[240px]">
-            <img
-              src="@/assets/images/home-package3.jpg"
-              alt="孕婦 + 新生兒寫真"
-              class="aspect-square object-cover"
-            />
-          </div>
-          <div class="flex flex-col items-start gap-1">
-            <span class="inline-block rounded-3xl bg-white px-2 py-1">C 方案</span>
-            <h3>
-              <span class="mr-1">孕婦 + 新生兒寫真</span>
-              <span>16800</span>
-            </h3>
-            <ol class="mb-[56px] ml-5 list-decimal md:mb-auto">
-              <li>孕婦寫真三套服裝(含妝髮)</li>
-              <li>孕婦寫真精修十張照片</li>
-              <li>寶寶服裝六套</li>
-              <li>全家福</li>
-              <li>6 × 8 - 12P 相本</li>
-              <li>贈全部電子檔</li>
+              <li v-for="content in photoPackage.content">{{ content }}</li>
             </ol>
             <a href="#" class="stretched-link">
               <div class="absolute bottom-6 right-6 flex gap-1">
