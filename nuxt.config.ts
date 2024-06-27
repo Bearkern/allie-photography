@@ -12,6 +12,15 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/tailwindcss',
   ],
+  runtimeConfig: {
+    public: {
+      GOOGLE_CLIENT_ID: '',
+      API_BASE: '',
+      NEWEBPAY_FORM_ACTION: '',
+      NEWEBPAY_MERCHANT_ID: '',
+      NEWEBPAY_VERSION: ''
+    }
+  },
   app: {
     head: {
       viewport: 'width=device-width, initial-scale=1',
