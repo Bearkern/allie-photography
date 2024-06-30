@@ -19,7 +19,7 @@ allPhotoPackages.value = [...allPhotoPackagesData.value].splice(0, 3);
 </script>
 
 <template>
-  <section class="min-h-[520px] bg-[url('@/assets/images/home-banner.jpg')] bg-cover bg-center">
+  <section class="min-h-[520px] bg-[url('@/assets/images/index/banner.jpg')] bg-cover bg-center">
     <div class="container flex h-full flex-col items-start justify-center">
       <p class="mb-4 text-lg text-white">
         每個生命的誕生是如此珍貴與感恩，<br />
@@ -39,13 +39,13 @@ allPhotoPackages.value = [...allPhotoPackagesData.value].splice(0, 3);
     </div>
     <ul class="flex grow gap-4 lg:max-w-[calc(theme('screens.xl')*1/2-24px)] lg:gap-6">
       <li
-        class="min-h-[232px] grow bg-[url('@/assets/images/home-about1.jpg')] bg-cover bg-center shadow lg:min-h-[360px]"
+        class="min-h-[232px] grow bg-[url('@/assets/images/index/about1.jpg')] bg-cover bg-center shadow lg:min-h-[360px]"
       ></li>
       <li
-        class="min-h-[232px] grow bg-[url('@/assets/images/home-about2.jpg')] bg-cover bg-center shadow lg:min-h-[360px]"
+        class="min-h-[232px] grow bg-[url('@/assets/images/index/about2.jpg')] bg-cover bg-center shadow lg:min-h-[360px]"
       ></li>
       <li
-        class="min-h-[232px] grow bg-[url('@/assets/images/home-about3.jpg')] bg-cover bg-center shadow lg:min-h-[360px]"
+        class="min-h-[232px] grow bg-[url('@/assets/images/index/about3.jpg')] bg-cover bg-center shadow lg:min-h-[360px]"
       ></li>
     </ul>
   </section>
@@ -58,7 +58,7 @@ allPhotoPackages.value = [...allPhotoPackagesData.value].splice(0, 3);
           <div class="flex h-full flex-col">
             <div class="mb-2 overflow-hidden rounded">
               <img
-                src="@/assets/images/home-portfolio1.jpg"
+                src="@/assets/images/index/portfolio1.jpg"
                 alt="新生兒寫真"
                 class="aspect-square object-cover"
               />
@@ -73,7 +73,7 @@ allPhotoPackages.value = [...allPhotoPackagesData.value].splice(0, 3);
           <div class="flex h-full flex-col">
             <div class="mb-2 overflow-hidden rounded">
               <img
-                src="@/assets/images/home-portfolio2.jpg"
+                src="@/assets/images/index/portfolio2.jpg"
                 alt="孕婦寫真"
                 class="aspect-square object-cover"
               />
@@ -88,7 +88,7 @@ allPhotoPackages.value = [...allPhotoPackagesData.value].splice(0, 3);
           <div class="flex h-full flex-col">
             <div class="mb-2 overflow-hidden rounded">
               <img
-                src="@/assets/images/home-portfolio3.jpg"
+                src="@/assets/images/index/portfolio3.jpg"
                 alt="週歲寫真"
                 class="aspect-square object-cover"
               />
@@ -112,36 +112,7 @@ allPhotoPackages.value = [...allPhotoPackagesData.value].splice(0, 3);
         class="md:w-full lg:w-2/3"
         :class="index % 2 === 0 ? '' : 'lg:ml-auto'"
       >
-        <div
-          class="relative flex h-full flex-col gap-2 overflow-hidden rounded p-6 md:flex-row md:gap-8"
-          :class="index % 2 === 0 ? 'bg-gray-100' : 'bg-light'"
-        >
-          <div class="md:max-w-[240px]">
-            <img
-              :src="photoPackage.cover"
-              :alt="photoPackage.title"
-              class="aspect-square object-cover"
-            />
-          </div>
-          <div class="flex flex-col items-start gap-1">
-            <span class="inline-block rounded-3xl bg-white px-2 py-1">{{
-              photoPackage.package
-            }}</span>
-            <h3>
-              <span class="mr-1">{{ photoPackage.title }}</span>
-              <span>{{ photoPackage.price }}</span>
-            </h3>
-            <ol class="mb-[56px] ml-5 list-decimal md:mb-auto">
-              <li v-for="content in photoPackage.content">{{ content }}</li>
-            </ol>
-            <NuxtLink to="/" class="stretched-link">
-              <div class="absolute bottom-6 right-6 flex gap-1">
-                <span class="material-symbols-outlined"> arrow_right_alt </span>
-                <span>查看細節</span>
-              </div>
-            </NuxtLink>
-          </div>
-        </div>
+        <Card :photoPackage="photoPackage" :index="index"></Card>
       </li>
     </ul>
   </section>
