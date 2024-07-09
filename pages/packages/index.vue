@@ -1,12 +1,6 @@
 <script lang="ts" setup>
-interface AllPhotoPackages {
-  _id: string;
-  package: string;
-  title: string;
-  price: number;
-  cover: string;
-  content: string[];
-}
+import type { AllPhotoPackages } from '@/types';
+
 const { getAllPhotoPackages } = useApi();
 const allPhotoPackages = ref<AllPhotoPackages[]>([]);
 

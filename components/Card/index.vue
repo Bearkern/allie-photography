@@ -44,7 +44,7 @@ const getClass = (index: number) => {
       <ol class="mb-6 ml-5 list-decimal md:mb-auto">
         <li v-for="content in props.photoPackage.content">{{ content }}</li>
       </ol>
-      <NuxtLink :to="`/package/${props.photoPackage._id}`" class="stretched-link ml-auto">
+      <NuxtLink :to="`/packages/${props.photoPackage._id}`" class="stretched-link ml-auto">
         <div class="flex gap-1">
           <span class="material-symbols-outlined"> arrow_right_alt </span>
           <span>查看細節</span>
