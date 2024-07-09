@@ -14,12 +14,11 @@ const route = useRoute();
 
 const currentPath = route.path;
 
-const isIndex = computed(() => currentPath === '/');
-const isPackages = computed(() => currentPath === '/packages');
+const isPackages = computed(() => currentPath.startsWith('/package'));
 
 const getClass = (index: number) => {
   const baseClass = index % 2 === 0 ? 'bg-gray-100' : 'bg-light';
-  const extraClass = route.path === '/packages' ? 'lg:flex-col lg:gap-2' : '';
+  const extraClass = route.path.startsWith('/package') ? 'lg:flex-col lg:gap-2' : '';
   return `${baseClass} ${extraClass}`;
 };
 </script>
@@ -37,9 +36,7 @@ const getClass = (index: number) => {
       />
     </div>
     <div class="flex h-full w-full flex-col items-start gap-1">
-      <span class="inline-block rounded-3xl bg-white px-2 py-1">{{
-        props.photoPackage.package
-      }}</span>
+      <span class="badge bg-white">{{ props.photoPackage.package }}</span>
       <h3>
         <span class="mr-1">{{ props.photoPackage.title }}</span>
         <span>{{ props.photoPackage.price }}</span>
@@ -47,7 +44,7 @@ const getClass = (index: number) => {
       <ol class="mb-6 ml-5 list-decimal md:mb-auto">
         <li v-for="content in props.photoPackage.content">{{ content }}</li>
       </ol>
-      <NuxtLink to="/" class="ml-auto" :class="isIndex ? 'stretched-link' : ''">
+      <NuxtLink :to="`/package/${props.photoPackage._id}`" class="stretched-link ml-auto">
         <div class="flex gap-1">
           <span class="material-symbols-outlined"> arrow_right_alt </span>
           <span>查看細節</span>
