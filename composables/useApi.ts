@@ -7,6 +7,11 @@ export const useApi = () => {
       method: 'GET',
     });
 
+  const getPhotoPackages = (packagesId: string | string[]) =>
+    useFetch(`${API_BASE}/photoPackages/${packagesId}`, {
+      method: 'GET',
+    });
+
   const getPortfolio = () =>
     useFetch(`${API_BASE}/portfolios`, {
       method: 'GET',
@@ -14,6 +19,7 @@ export const useApi = () => {
 
   return {
     getAllPhotoPackages,
+    getPhotoPackages,
     getPortfolio,
   };
 };
