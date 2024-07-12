@@ -11,7 +11,12 @@ export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt',
     '@nuxtjs/tailwindcss',
+    'nuxt-swiper'
   ],
+  swiper: {
+    styleLang: 'scss',
+    modules: ['navigation', 'pagination', 'thumbs'],
+  },
   runtimeConfig: {
     public: {
       GOOGLE_CLIENT_ID: '',
