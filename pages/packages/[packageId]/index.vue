@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import type { Packages, AllPhotoPackages } from '@/types';
 import { usePackagesStore } from '@/stores/packages';
+
 const packagesStore = usePackagesStore();
 const { setPackages } = packagesStore;
 
@@ -11,16 +12,17 @@ const { getPhotoPackages, getAllPhotoPackages } = useApi();
 const { data: photoPackagesData } = await getPhotoPackages(packageId);
 const { data: allPhotoPackagesData } = await getAllPhotoPackages();
 const photoPackages = ref(photoPackagesData.value as Packages);
-const allPhotoPackages = ref([...(allPhotoPackagesData.value as AllPhotoPackages[])]);
 setPackages(photoPackages.value);
 
-const allPhotos = ref([photoPackages.value.cover, ...photoPackages.value.photos]);
-const currentImage = ref(photoPackages.value.cover);
-const updateImage = (photo: string) => {
-  currentImage.value = photo;
-};
+const allPhotoPackages = ref([...(allPhotoPackagesData.value as AllPhotoPackages[])]);
+const morePhotoPackages = allPhotoPackages.value.filter((more) => more._id !== packageId);
 
-console.log('allPhotoPackages:', allPhotoPackages);
+const allPhotos = ref([photoPackages.value.cover, ...photoPackages.value.photos]);
+
+const thumbsSwiper = ref(null);
+const setThumbsSwiper = (swiper: any) => {
+  thumbsSwiper.value = swiper;
+};
 </script>
 
 <template>
@@ -34,28 +36,30 @@ console.log('allPhotoPackages:', allPhotoPackages);
       </li>
     </ol>
   </nav>
-  <section class="mb-6 bg-light py-6">
+
+  <section class="mb-6 bg-grey-100 py-6">
     <div class="container">
       <div class="flex gap-6">
         <div class="flex h-[400px] w-2/3 gap-2">
-          <div class="h-full w-3/4 border-8 border-white">
-            <img :src="currentImage" alt="cover" class="h-full w-full rounded object-cover" />
-          </div>
-          <ul class="flex w-1/4 flex-col gap-1 overflow-y-auto">
-            <li
-              v-for="(photo, index) in allPhotos"
-              :key="index + 1"
-              @click="updateImage(photo)"
-              class=""
-              :class="{ 'border-4 border-white': currentImage === photo }"
-            >
-              <div class="overflow-hidden rounded-lg">
-                <img :src="photo" alt="photo" class="rounded" />
-              </div>
-            </li>
-          </ul>
+          <Swiper :modules="[SwiperThumbs]" :thumbs="{ swiper: thumbsSwiper }" class="w-3/4">
+            <SwiperSlide v-for="(photo, index) in allPhotos" :key="index + 1">
+              <img :src="photo" class="h-full w-full rounded object-cover" />
+            </SwiperSlide>
+          </Swiper>
+          <Swiper
+            @swiper="setThumbsSwiper"
+            :slidesPerView="3.5"
+            :space-between="8"
+            class="w-1/4"
+            direction="vertical"
+          >
+            <SwiperSlide v-for="(photo, index) in allPhotos" :key="index + 1">
+              <img :src="photo" class="h-full w-full rounded object-cover" />
+            </SwiperSlide>
+          </Swiper>
         </div>
-        <div class="w-1/3">
+
+        <div class="w-1/3 rounded bg-light p-6">
           <div class="flex flex-col items-start gap-2">
             <div class="flex gap-2">
               <span class="badge bg-secondary text-white">{{ photoPackages.package }}</span>
@@ -90,20 +94,22 @@ console.log('allPhotoPackages:', allPhotoPackages);
     <div v-html="photoPackages.notice"></div>
   </section>
 
-  <section class="container">
-    <h3 class="mb-1">了解更多方案</h3>
-    <section class="container py-10 lg:py-16">
-      <ul class="flex flex-col flex-wrap gap-6 md:flex-row lg:flex-nowrap">
-        <li
-          v-for="(photoPackage, index) in allPhotoPackages"
-          :key="photoPackage._id"
-          class="md:w-full"
-        >
-          <Card :photoPackage="photoPackage" :index="index"></Card>
-        </li>
-      </ul>
-    </section>
+  <section class="container mb-20">
+    <h3 class="mb-2">了解更多方案</h3>
+    <Swiper :slides-per-view="3" :space-between="24">
+      <SwiperSlide
+        v-for="(photoPackage, index) in morePhotoPackages"
+        :key="photoPackage._id"
+        class="more-swiper-slide"
+      >
+        <Card :photoPackage="photoPackage" :index="index"></Card>
+      </SwiperSlide>
+    </Swiper>
   </section>
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+.more-swiper-slide {
+  height: auto;
+}
+</style>
