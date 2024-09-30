@@ -1,5 +1,6 @@
-export interface Packages {
+export interface photoPackage {
   _id: string;
+  path: string;
   package: string;
   title: string;
   price: number;
@@ -10,8 +11,9 @@ export interface Packages {
   photos: string[];
 }
 
-export interface AllPhotoPackages {
+export interface AllPhotoPackage {
   _id: string;
+  path: string;
   package: string;
   title: string;
   price: number;

@@ -1,15 +1,10 @@
 <script lang="ts" setup>
-import type { AllPhotoPackages } from '@/types';
-
-const { getAllPhotoPackages } = useApi();
-const allPhotoPackages = ref<AllPhotoPackages[]>([]);
-
-const AllPhotoPackagesResult = (await getAllPhotoPackages()) as {
-  data: { value: AllPhotoPackages[] };
-};
-const { data: allPhotoPackagesData } = AllPhotoPackagesResult;
-
-allPhotoPackages.value = [...allPhotoPackagesData.value].splice(0, 3);
+const props = defineProps({
+  allPhotoPackages: {
+    type: [Object],
+    default: () => ({}),
+  },
+});
 </script>
 
 <template>
@@ -19,11 +14,10 @@ allPhotoPackages.value = [...allPhotoPackagesData.value].splice(0, 3);
       <h2>攝影方案</h2>
     </div>
   </section>
-
-  <section class="container py-10 lg:py-16">
+  <section class="container py-10 lg:py-16" v-bind="$attrs">
     <ul class="flex flex-col flex-wrap gap-6 md:flex-row lg:flex-nowrap">
       <li
-        v-for="(photoPackage, index) in allPhotoPackages"
+        v-for="(photoPackage, index) in props.allPhotoPackages"
         :key="photoPackage._id"
         class="md:w-full"
       >

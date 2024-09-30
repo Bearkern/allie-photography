@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import type { Packages } from '@/types'
+import type { Packages } from '@/types/package'
 
 export const usePackagesStore = defineStore('packages', {
   state: (): Packages => ({
