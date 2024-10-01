@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import type { PhotoPackage, PhotoPackageBase, PhotoPackageMap } from '@/types/package';
-import { usePackagesStore } from '@/stores/packages';
+import { usePackageStore } from '@/stores/package';
 
-const packagesStore = usePackagesStore();
-const { setPackages } = packagesStore;
+const packageStore = usePackageStore();
+const { setPhotoPackage } = packageStore;
 
 const props = withDefaults(defineProps<{ photoPackageMap: PhotoPackageMap }>(), {
   photoPackageMap: () => ({}),
@@ -18,7 +18,7 @@ const { data: photoPackageData } = await getPhotoPackages(packageId);
 const { data: allPhotoPackagesData } = await getAllPhotoPackages();
 
 const photoPackage = ref(photoPackageData.value as PhotoPackage);
-setPackages(photoPackage.value);
+setPhotoPackage(photoPackage.value);
 
 const allPhotoPackages = ref([...(allPhotoPackagesData.value as PhotoPackageBase[])]);
 const morePhotoPackages = allPhotoPackages.value.filter((more: any) => more._id !== packageId);
