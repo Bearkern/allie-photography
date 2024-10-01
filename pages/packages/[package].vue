@@ -86,14 +86,26 @@ const setThumbsSwiper = (swiper: any) => {
         </div>
       </div>
     </section>
-    <section class="container mb-6">
-      <ul>
-        <li>
-          <NuxtLink :to="`/packages/${photoPackage.path}`">方案詳細介紹</NuxtLink>
-          <NuxtLink :to="`/packages/${photoPackage.path}/notice`">預訂注意事項</NuxtLink>
-        </li>
-      </ul>
-      <NuxtPage />
+    <section class="mb-6 flex flex-col gap-6">
+      <div class="border-b">
+        <nav class="container flex gap-4 overflow-x-auto whitespace-nowrap py-3 lg:gap-10">
+          <NuxtLink
+            :to="`/packages/${photoPackage.path}`"
+            class="nav-default"
+            :class="{ 'nav-active': route.path === `/packages/${photoPackage.path}` }"
+            >方案詳細介紹</NuxtLink
+          >
+          <NuxtLink
+            :to="`/packages/${photoPackage.path}/notice`"
+            class="nav-default"
+            :class="{ 'nav-active': route.path === `/packages/${photoPackage.path}/notice` }"
+            >預訂注意事項</NuxtLink
+          >
+        </nav>
+      </div>
+      <div class="container">
+        <NuxtPage />
+      </div>
     </section>
 
     <section class="container mb-20">
@@ -114,5 +126,13 @@ const setThumbsSwiper = (swiper: any) => {
 <style scoped lang="scss">
 .more-swiper-slide {
   height: auto;
+}
+
+.nav-default {
+  @apply rounded-full px-4 py-2 hover:bg-secondary hover:font-bold hover:text-white;
+}
+
+.nav-active {
+  @apply bg-secondary font-bold text-white;
 }
 </style>
