@@ -1,17 +1,16 @@
 <script lang="ts" setup>
-import type { AllPhotoPackage } from '../types/packages';
+import type { PhotoPackageBase } from '@/types/package';
 
 const { getAllPhotoPackages } = useApi();
-const allPhotoPackages = ref<AllPhotoPackage[]>([]);
-
-const AllPhotoPackagesResult = (await getAllPhotoPackages()) as {
-  data: { value: AllPhotoPackage[] };
+const allPhotoPackagesResult = (await getAllPhotoPackages()) as {
+  data: { value: PhotoPackageBase[] };
 };
-const { data: allPhotoPackagesData } = AllPhotoPackagesResult;
 
+const allPhotoPackages = ref<PhotoPackageBase[]>([]);
+const { data: allPhotoPackagesData } = allPhotoPackagesResult;
 allPhotoPackages.value = [...allPhotoPackagesData.value].splice(0, 3);
 
-const pageMap = allPhotoPackages.value.reduce((acc: any, cur: any) => {
+const photoPackageMap = allPhotoPackages.value.reduce((acc: any, cur: any) => {
   acc[cur.path] = cur;
   return acc;
 }, {});
@@ -19,7 +18,7 @@ const pageMap = allPhotoPackages.value.reduce((acc: any, cur: any) => {
 
 <template>
   <div>
-    <NuxtPage :allPhotoPackages="allPhotoPackages" :pageMap="pageMap" />
+    <NuxtPage :allPhotoPackages="allPhotoPackages" :photoPackageMap="photoPackageMap" />
   </div>
 </template>
 

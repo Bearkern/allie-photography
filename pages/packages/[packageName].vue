@@ -1,27 +1,26 @@
 <script lang="ts" setup>
-import type { Packages, AllPhotoPackages } from '@/types/packages';
+import type { PhotoPackage, PhotoPackageBase, PhotoPackageMap } from '@/types/package';
 import { usePackagesStore } from '@/stores/packages';
 
 const packagesStore = usePackagesStore();
 const { setPackages } = packagesStore;
 
-const route = useRoute();
-const props = defineProps({
-  pageMap: {
-    type: Object,
-    default: () => ({}),
-  },
+const props = withDefaults(defineProps<{ photoPackageMap: PhotoPackageMap }>(), {
+  photoPackageMap: () => ({}),
 });
 
-const packageId = props.pageMap[route.params.packageName]._id;
+const route = useRoute();
+const packageName = route.params.packageName;
+const packageId = props.photoPackageMap[packageName]._id;
 
 const { getPhotoPackages, getAllPhotoPackages } = useApi();
 const { data: photoPackagesData } = await getPhotoPackages(packageId);
 const { data: allPhotoPackagesData } = await getAllPhotoPackages();
-const photoPackages = ref(photoPackagesData.value as Packages);
+
+const photoPackages = ref(photoPackagesData.value as PhotoPackage);
 setPackages(photoPackages.value);
 
-const allPhotoPackages = ref([...(allPhotoPackagesData.value as AllPhotoPackages[])]);
+const allPhotoPackages = ref([...(allPhotoPackagesData.value as PhotoPackageBase[])]);
 const morePhotoPackages = allPhotoPackages.value.filter((more: any) => more._id !== packageId);
 
 const allPhotos = ref([photoPackages.value.cover, ...photoPackages.value.photos]);

@@ -1,20 +1,13 @@
 <script lang="ts" setup>
-interface AllPhotoPackages {
-  _id: string;
-  package: string;
-  title: string;
-  price: number;
-  cover: string;
-  content: string[];
-}
+import type { PhotoPackageBase } from '@/types/package';
+
 const { getAllPhotoPackages } = useApi();
-const allPhotoPackages = ref<AllPhotoPackages[]>([]);
-
-const AllPhotoPackagesResult = (await getAllPhotoPackages()) as {
-  data: { value: AllPhotoPackages[] };
+const allPhotoPackagesResult = (await getAllPhotoPackages()) as {
+  data: { value: PhotoPackageBase[] };
 };
-const { data: allPhotoPackagesData } = AllPhotoPackagesResult;
 
+const allPhotoPackages = ref<PhotoPackageBase[]>([]);
+const { data: allPhotoPackagesData } = allPhotoPackagesResult;
 allPhotoPackages.value = [...allPhotoPackagesData.value].splice(0, 3);
 </script>
 
