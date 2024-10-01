@@ -10,20 +10,20 @@ const props = withDefaults(defineProps<{ photoPackageMap: PhotoPackageMap }>(), 
 });
 
 const route = useRoute();
-const packageName = route.params.packageName;
+const packageName = route.params.package;
 const packageId = props.photoPackageMap[packageName]._id;
 
 const { getPhotoPackages, getAllPhotoPackages } = useApi();
-const { data: photoPackagesData } = await getPhotoPackages(packageId);
+const { data: photoPackageData } = await getPhotoPackages(packageId);
 const { data: allPhotoPackagesData } = await getAllPhotoPackages();
 
-const photoPackages = ref(photoPackagesData.value as PhotoPackage);
-setPackages(photoPackages.value);
+const photoPackage = ref(photoPackageData.value as PhotoPackage);
+setPackages(photoPackage.value);
 
 const allPhotoPackages = ref([...(allPhotoPackagesData.value as PhotoPackageBase[])]);
 const morePhotoPackages = allPhotoPackages.value.filter((more: any) => more._id !== packageId);
 
-const allPhotos = ref([photoPackages.value.cover, ...photoPackages.value.photos]);
+const allPhotos = ref([photoPackage.value.cover, ...photoPackage.value.photos]);
 
 const thumbsSwiper = ref(null);
 const setThumbsSwiper = (swiper: any) => {
@@ -39,7 +39,7 @@ const setThumbsSwiper = (swiper: any) => {
           <NuxtLink to="/packages" class="font-bold text-secondary">攝影方案</NuxtLink>
         </li>
         <li class="ml-2 before:pe-2 before:content-['\e5e1']">
-          {{ photoPackages.title }}
+          {{ photoPackage.title }}
         </li>
       </ol>
     </nav>
@@ -67,19 +67,19 @@ const setThumbsSwiper = (swiper: any) => {
           <div class="w-1/3 rounded bg-light p-6">
             <div class="flex flex-col items-start gap-2">
               <div class="flex gap-2">
-                <span class="badge bg-secondary text-white">{{ photoPackages.package }}</span>
-                <h2 class="text-md">{{ photoPackages.title }}</h2>
+                <span class="badge bg-secondary text-white">{{ photoPackage.package }}</span>
+                <h2 class="text-md">{{ photoPackage.title }}</h2>
               </div>
               <div class="flex flex-nowrap">
                 <p>方案內容：</p>
                 <ol>
-                  <li v-for="(content, index) in photoPackages.content" :key="index + 1">
+                  <li v-for="(content, index) in photoPackage.content" :key="index + 1">
                     {{ content }}
                   </li>
                 </ol>
               </div>
               <p>
-                方案價格：<span>{{ photoPackages.price }}</span>
+                方案價格：<span>{{ photoPackage.price }}</span>
               </p>
             </div>
           </div>
@@ -87,15 +87,15 @@ const setThumbsSwiper = (swiper: any) => {
       </div>
     </section>
     <section class="container mb-6">
-      <h3 class="mb-1">方案詳細介紹</h3>
       <ul>
-        <li v-for="(item, index) in photoPackages.detail" :key="index + 1">{{ item }}</li>
+        <li>
+          <NuxtLink :to="`/packages/${photoPackage.path}`">方案詳細介紹</NuxtLink>
+          <NuxtLink :to="`/packages/${photoPackage.path}/notice`">預訂注意事項</NuxtLink>
+        </li>
       </ul>
+      <NuxtPage />
     </section>
-    <section class="container mb-6">
-      <h3 class="mb-1">預訂注意事項</h3>
-      <div v-html="photoPackages.notice"></div>
-    </section>
+
     <section class="container mb-20">
       <h3 class="mb-2">了解更多方案</h3>
       <Swiper :slides-per-view="3" :space-between="24">
