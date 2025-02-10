@@ -7,10 +7,7 @@ const props = withDefaults(defineProps<{ allPhotoPackages: PhotoPackageBase[] }>
 </script>
 
 <template>
-  <!-- <section class="min-h-[300px] bg-gradient-to-l from-primary to-light bg-cover bg-center"> -->
-  <section
-    class="relative min-h-[300px] bg-[url('@/assets/images/banners/about.jpg')] bg-cover bg-center"
-  >
+  <section class="relative min-h-[300px] bg-gradient-to-r from-light to-primary bg-cover bg-center">
     <div class="absolute inset-0 bg-primary opacity-20"></div>
     <div class="container relative z-10 flex h-[300px] items-center">
       <h2>攝影方案</h2>

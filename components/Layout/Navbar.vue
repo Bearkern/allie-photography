@@ -40,11 +40,7 @@ watch(
             <li><NuxtLink to="/portfolios">攝影作品</NuxtLink></li>
             <li><NuxtLink to="/packages">攝影方案</NuxtLink></li>
             <li><NuxtLink to="/contact">聯絡我們</NuxtLink></li>
-            <li>
-              <NuxtLink to="/booking">
-                <span class="material-symbols-outlined"> shopping_cart </span>
-              </NuxtLink>
-            </li>
+            <li><NuxtLink to="/booking">預約拍攝</NuxtLink></li>
           </ul>
         </nav>
       </div>

@@ -2,21 +2,20 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   devServer: { port: 3001 },
+
   typescript: {
     shim: false
   },
+
   imports: {
     dirs: ['stores']
   },
+
   modules: [
     '@pinia/nuxt',
     '@nuxtjs/tailwindcss',
-    'nuxt-swiper'
   ],
-  swiper: {
-    styleLang: 'scss',
-    modules: ['navigation', 'pagination', 'thumbs'],
-  },
+
   runtimeConfig: {
     public: {
       GOOGLE_CLIENT_ID: '',
@@ -26,6 +25,7 @@ export default defineNuxtConfig({
       NEWEBPAY_VERSION: ''
     }
   },
+
   app: {
     buildAssetsDir: '/',
     head: {
@@ -42,4 +42,6 @@ export default defineNuxtConfig({
       ],
     }
   },
+
+  compatibilityDate: '2025-02-10',
 })
